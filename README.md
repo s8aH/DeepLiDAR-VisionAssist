@@ -112,6 +112,7 @@ python train.py \
 
 ## 🎯 Evaluation
 
+Evaluate Pretrained Model
 ```bash
 python evaluate.py --ckpt path_to_your_model --data_root your_path_to_kitti 
 ```
