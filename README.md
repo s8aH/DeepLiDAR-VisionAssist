@@ -6,6 +6,15 @@ This project presents a LiDAR-based 3D object detection system designed to assis
 
 ---
 
+## 📷 Sample Outputs
+
+<div align="center">
+  <img src="demo_video.mov" width="400"/>
+  <p>Example prediction with annotated 3D bounding boxes</p>
+</div>
+
+---
+
 ## 🚀 Features
 
 - Real-time 3D object detection using PointPillars
@@ -109,15 +118,6 @@ Each detected object is translated into natural language via `gTTS`:
 from audio_feedback import speak_detection
 speak_detection(class_name="Car", distance=10.5, direction="left", confidence=0.91)
 ```
-
----
-
-## 📷 Sample Outputs
-
-<div align="center">
-  <img src="outputs/predictions/example1.png" width="400"/>
-  <p>Example prediction with annotated 3D bounding boxes</p>
-</div>
 
 ---
 
