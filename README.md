@@ -10,7 +10,7 @@ This project presents a LiDAR-based 3D object detection system designed to assis
 
 You can read the full report here:
 
-👉 [LiDAR-Based 3D Object Detection Report (PDF)](report.pdf)
+👉 [LiDAR-Based 3D Object Detection Report (PDF)](lidar_3D_object_detection_pointpillars_report.pdf)
 
 ---
 
