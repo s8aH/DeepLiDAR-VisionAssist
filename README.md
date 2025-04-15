@@ -6,6 +6,14 @@ This project presents a LiDAR-based 3D object detection system designed to assis
 
 ---
 
+## 📄 Project Report
+
+You can read the full report here:
+
+👉 [LiDAR-Based 3D Object Detection Report (PDF)](report.pdf)
+
+---
+
 ## 📷 Sample Outputs
 
 🎥 [Click here to view the demo video](https://drive.google.com/file/d/1kJScnVlS8XourOvelULTHqV6_wJT1BV7/view?usp=sharing)
@@ -80,7 +88,7 @@ pedestrian → Pedestrian
 python train.py --data_root your_path_to_kitti
 ```
 
-### Fine-tuning:
+### Fine-tuning on Lyft:
 ```bash
 python train.py \
     --data_root <DATASET_DIR> \
@@ -133,15 +141,10 @@ Metrics:
 
 ---
 
-## 🔊 Audio Feedback Module
+## 🔊 Audio Feedback
 
 Each detected object is translated into natural language via `gTTS`:
 > “Pedestrian, 8.3 meters, right, 87% confidence”
-
-```python
-from audio_feedback import speak_detection
-speak_detection(class_name="Car", distance=10.5, direction="left", confidence=0.91)
-```
 
 ---
 
@@ -151,6 +154,7 @@ speak_detection(class_name="Car", distance=10.5, direction="left", confidence=0.
 - Extend to additional object categories
 - Explore domain adaptation or transfer learning
 - Include object tracking and trajectory prediction
+- Develop a mobile app for real-time, on-device assistive navigation  
 
 ---
 
