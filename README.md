@@ -49,8 +49,8 @@ This project presents a LiDAR-based 3D object detection system designed to assis
 
 ### Installation
 ```bash
-git clone https://github.com/your-repo/pointpillars-lidar-assistive.git
-cd pointpillars-lidar-assistive
+git clone https://github.com/s8aH/DeepLiDAR-VisionAssist.git
+cd DeepLiDAR-VisionAssist
 pip install -r requirements.txt
 ```
 
