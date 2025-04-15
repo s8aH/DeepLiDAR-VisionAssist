@@ -6,12 +6,6 @@ This project presents a LiDAR-based 3D object detection system designed to assis
 
 ---
 
-## 🙏 Acknowledgements
-
-- This project builds on the [PointPillars implementation by zhulf0804](https://github.com/zhulf0804/PointPillars).
-
----
-
 ## 📷 Sample Outputs
 
 🎥 [Click here to view the demo video](https://drive.google.com/file/d/1kJScnVlS8XourOvelULTHqV6_wJT1BV7/view?usp=sharing)
@@ -39,29 +33,38 @@ This project presents a LiDAR-based 3D object detection system designed to assis
 
 ## 🛠 Setup
 
-### Prerequisites
-- Python 3.8+
-- PyTorch
-- OpenPCDet (or custom PointPillars implementation)
-- NumPy, Matplotlib
-- gTTS (for audio feedback)
-- CUDA-compatible GPU
-
 ### Installation
 ```bash
 git clone https://github.com/s8aH/DeepLiDAR-VisionAssist.git
 cd DeepLiDAR-VisionAssist
 pip install -r requirements.txt
+python setup.py build_ext --inplace
+pip install .
 ```
 
 ---
 
 ## 📦 Datasets
-
 - **KITTI**: [Link](https://www.cvlibs.net/datasets/kitti/)
 - **Lyft (nuScenes format)**: [Kaggle](https://www.kaggle.com/competitions/3d-object-detection-for-autonomous-vehicles)
 
-> Lyft dataset was converted to KITTI format with relabeled classes:
+### 🔄 Convert Lyft Dataset to KITTI Format
+
+Make the script executable (if needed):
+```bash
+chmod +x convert_lyft_to_kitti.sh
+```
+To convert the Lyft dataset into KITTI format for training and fine-tuning:
+```bash
+./convert_lyft_to_kitti.sh
+```
+
+To map Lyft dataset classes to KITTI-style classes, run:
+```bash
+python pointpillars/dataset/map_kitti_classes.py
+```
+
+> This will convert Lyft's original labels into KITTI's format using the following mapping:
 ```
 car, truck, bus → Car  
 bicycle, motorcycle → Cyclist  
@@ -74,23 +77,48 @@ pedestrian → Pedestrian
 
 ### Training on KITTI:
 ```bash
-python train.py --cfg configs/pointpillars_kitti.yaml
+python train.py --data_root your_path_to_kitti
 ```
 
 ### Fine-tuning on Lyft (converted):
 ```bash
-python train.py --cfg configs/pointpillars_lyft.yaml --pretrained_model checkpoints/kitti.pth
+python train.py \
+    --data_root <DATASET_DIR> \
+    --saved_path <OUTPUT_DIR> \
+    --pretrained_weights <PRETRAINED_MODEL_PATH> \
+    --batch_size <BATCH_SIZE> \
+    --num_workers <NUM_WORKERS> \
+    --init_lr <LEARNING_RATE> \
+    --max_epoch <NUM_EPOCHS> \
+    --ckpt_freq_epoch <CHECKPOINT_INTERVAL> \
+    --log_freq <LOGGING_FREQUENCY>
 ```
 
-- Optimizer: AdamW
-- LR: 2.5e-4 with OneCycleLR
-- Epochs: 160
-- Batch size: 6
-- Mixed precision + gradient clipping
+### 📌 Argument Description
+
+| Argument                  | Description                                                                 |
+|---------------------------|-----------------------------------------------------------------------------|
+| `<DATASET_DIR>`           | Path to dataset folder in KITTI format                                      |
+| `<OUTPUT_DIR>`            | Where to save checkpoints and logs                                          |
+| `<PRETRAINED_MODEL_PATH>` | Path to a pretrained `.pth` model (optional for fine-tuning)                |
+| `<BATCH_SIZE>`            | Number of samples per training batch (e.g., 4 or 8)                          |
+| `<NUM_WORKERS>`           | Number of parallel data loading workers (based on your CPU)                 |
+| `<LEARNING_RATE>`         | Initial learning rate (e.g., 0.0001)                                         |
+| `<NUM_EPOCHS>`            | Total number of training epochs (e.g., 100)                                  |
+| `<CHECKPOINT_INTERVAL>`   | Save model checkpoint every N epochs (e.g., 10)                              |
+| `<LOGGING_FREQUENCY>`     | Print logs every N steps (e.g., 4)                                           |
 
 ---
 
 ## 🎯 Evaluation
+
+```bash
+python evaluate.py --ckpt path_to_your_model --data_root your_path_to_kitti 
+```
+Evaluate Fine-tuned Model
+```bash
+python evaluate.py --ckpt path_to_your_model --data_root your_path_to_kitti --finetune
+```
 
 Metrics:  
 - **2D BBox**, **BEV**, **3D BBox**, and **AOS** (Average Orientation Similarity)  
@@ -125,15 +153,6 @@ speak_detection(class_name="Car", distance=10.5, direction="left", confidence=0.
 
 ---
 
-## 📜 Citation
+## 🙏 Acknowledgements
 
-If you find this work useful, please cite:
-
-```
-@misc{han2025pointpillarsassistive,
-  title={LiDAR and Deep Learning for Object Detection and Environment Description for the Visually Impaired},
-  author={Sooa Han, Alex Cao},
-  year={2025},
-  note={Course Project}
-}
-```
+- This project builds on the [PointPillars implementation by zhulf0804](https://github.com/zhulf0804/PointPillars).
