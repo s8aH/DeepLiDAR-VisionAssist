@@ -80,7 +80,7 @@ pedestrian → Pedestrian
 python train.py --data_root your_path_to_kitti
 ```
 
-### Fine-tuning on Lyft (converted):
+### Fine-tuning:
 ```bash
 python train.py \
     --data_root <DATASET_DIR> \
