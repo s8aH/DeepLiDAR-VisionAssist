@@ -25,23 +25,6 @@ This project presents a LiDAR-based 3D object detection system designed to assis
 
 ---
 
-## 📁 Project Structure
-
-```
-├── data/
-│   ├── kitti/              # KITTI dataset
-│   └── lyft_kitti_format/  # Lyft dataset converted to KITTI format
-├── src/
-│   ├── pointpillars/       # Model architecture and training logic
-│   ├── inference/          # Inference and visualization scripts
-│   └── audio_feedback.py   # gTTS-based feedback module
-├── outputs/
-│   └── predictions/        # Annotated images and point clouds
-├── README.md
-```
-
----
-
 ## 🛠 Setup
 
 ### Prerequisites
