@@ -6,6 +6,12 @@ This project presents a LiDAR-based 3D object detection system designed to assis
 
 ---
 
+## 🙏 Acknowledgements
+
+- This project builds on the [PointPillars implementation by zhulf0804](https://github.com/zhulf0804/PointPillars).
+
+---
+
 ## 📷 Sample Outputs
 
 🎥 [Click here to view the demo video](https://drive.google.com/file/d/1kJScnVlS8XourOvelULTHqV6_wJT1BV7/view?usp=sharing)
@@ -19,12 +25,6 @@ This project presents a LiDAR-based 3D object detection system designed to assis
 - Optimized for **mobility applications on iOS** with LiDAR (e.g., iPhone Pro series)
 - Integrated **gTTS-based audio feedback** for enhanced accessibility
 - Evaluation includes 2D, BEV, and 3D metrics with orientation accuracy (AOS)
-
----
-
-## 🙏 Acknowledgements
-
-- This project builds on the [PointPillars implementation by zhulf0804](https://github.com/zhulf0804/PointPillars).
 
 ---
 
