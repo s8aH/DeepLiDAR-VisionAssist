@@ -8,7 +8,9 @@ This project presents a LiDAR-based 3D object detection system designed to assis
 
 ## 📷 Sample Outputs
 
-🎥 [Click here to view the demo video](demo_video.mov)
+<div align="center">
+  <a href="demo_video.mov">📹 View Demo Video: Annotated 3D Bounding Box Predictions</a>
+</div>
 
 ---
 
