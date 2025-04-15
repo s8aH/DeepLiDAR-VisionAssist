@@ -28,6 +28,15 @@ This project presents a LiDAR-based 3D object detection system designed to assis
 
 ---
 
+## Pipeline Overview
+
+<div align="center">
+  <img src="images/pointpillars_pipeline.png" width="600" alt="PointPillars Pipeline Diagram"/>
+  <p><em>PointPillars data flow from input to output</em></p>
+</div>
+
+---
+
 ## 🛠 Setup
 
 ### Prerequisites
